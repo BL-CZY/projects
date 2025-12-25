@@ -2,7 +2,7 @@
     description = "Binary Ninja Flake";
 
     inputs = {
-        nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+        nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     };
 
     outputs = { self, nixpkgs }: 
@@ -22,7 +22,8 @@
                     zlib # libz.so.1
                     libglvnd # libEGL.so.1 & libOpenGL.so.0
                     fontconfig # libfontconfig.so.1
-                    libx11 # libX11.so.6
+                    # libx11 # libX11.so.6
+                    xorg.libX11 # libX11.so.6
                     libxkbcommon # libxkbcommon.so.0
                     libGLX # libGLX.so.0
                     freetype # libfreetype.so.6
