@@ -27,6 +27,18 @@
                     libGLX # libGLX.so.0
                     freetype # libfreetype.so.6
                     dbus # libdbus
+                    
+                    # QT Dependencies
+                    xorg.libxcb
+                    xorg.xcbutilcursor
+                    xorg.xcbutilrenderutil
+                    xorg.xcbutil
+                    xorg.xcbutilimage
+                    xorg.xcbutilkeysyms
+                    qt6.qtwayland
+
+                    # Wayland
+                    egl-wayland
                ];
                runScript = "zsh";
                }).env; 
