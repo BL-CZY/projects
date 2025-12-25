@@ -12,11 +12,11 @@
                 inherit system;
                 config.allowUnfree = true;
             };
-        in {
-           devShells.${system}.default = (pkgs.buildFHSEnv {
-               name = "binary-ninja-env";
 
-               targetPkgs = pkgs: with pkgs; [
+            binja-fhs = pkgs.buildFHSEnv {
+                name = "binary-ninja-env";
+
+                targetPkgs = pkgs: with pkgs; [
                     glibc
                     stdenv.cc.cc.lib # libstdc++.so.6
                     zlib # libz.so.1
@@ -32,15 +32,20 @@
                     xorg.libxcb
                     xorg.xcbutilcursor
                     xorg.xcbutilrenderutil
+                    xorg.xcbutilwm
                     xorg.xcbutil
                     xorg.xcbutilimage
                     xorg.xcbutilkeysyms
                     qt6.qtwayland
+                    wayland
 
                     # Wayland
                     egl-wayland
-               ];
-               runScript = "zsh";
-               }).env; 
+                ];
+                runScript = "./binaryninja/binaryninja";
+            };
+        in {
+           devShells.${system}.default = binja-fhs.env;
+           packages.${system}.default = binja-fhs;
         };
 }
