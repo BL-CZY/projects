@@ -43,7 +43,7 @@
                     # Wayland
                     egl-wayland
                 ];
-                runScript = "./binaryninja/binaryninja";
+                runScript = "nohup ./binaryninja/binaryninja > /dev/null 2>&1 &";
             };
         in {
            devShells.${system}.default = binja-fhs.env;
